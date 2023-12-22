@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:15:56 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 16:20:07 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2023/12/21 15:10:00 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,11 @@ void			ss(t_push *p, int flag);
 void			ra(t_push *p, int flag);
 void			rb(t_push *p, int flag);
 void			rr(t_push *p, int flag);
+void			rra(t_push *p, int flag);
+void			rrb(t_push *p, int flag);
+void			rrr(t_push *p, int flag);
+void			sort_3(t_push *p);
+void			push_b(t_push *p);
+void			put_pos(t_push *p);
 
 #endif

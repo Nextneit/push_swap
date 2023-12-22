@@ -6,13 +6,11 @@
 #    By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 16:21:15 by ncruz-ga          #+#    #+#              #
-#    Updated: 2023/12/20 12:11:52 by ncruz-ga         ###   ########.fr        #
+#    Updated: 2023/12/21 15:01:30 by ncruz-ga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-
-NAME_BONUS = push_swap_bonus
 
 CC = gcc
 
@@ -22,32 +20,29 @@ LIBFT_PATH = ./libft
 
 LIBFT = $(LIBFT_PATH)/libft.a
 
-PUSH_SWAP = psuh_swap.a
-
-PUSH_SWAP_BONUS = 
+PUSH_SWAP = push_swap.a
 
 LIB = ar rcs
 
-SRCS = push_swap.c\
-		check_args.c\
-		fill_stack.c\
+SRCS = src/push_swap.c\
+		src/check_arg.c\
+		src/fill_stack.c\
+		src/mov.c\
+		src/mov_2.c\
+		src/mov_3.c\
+		src/algorithm_utils.c\
+		src/algorithm.c\
+		
 
 OBJS = $(SRCS:.c=.o)
 
-SRCS_BONUS = 
-
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 $(NAME):		$(OBJS) $(LIBFT)
-					@$(LIB) $(PIPEX) $(OBJS)
-					@$(CC) $(CFLAGS) $(PIPEX) $(LIBFT) -o $(NAME)
+					@$(LIB) $(PUSH_SWAP) $(OBJS)
+					@$(CC) $(CFLAGS) $(PUSH_SWAP) $(LIBFT) -o $(NAME)
 
 $(OBJS):		src/%.o : src/%.c
 					@$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME_BONUS):	$(OBJS_BONUS) $(LIBFT)
-				@$(LIB) $(PIPEX_BONUS) $(OBJS_BONUS)
-				@$(CC) $(CFLAGS) $(PIPEX_BONUS) $(LIBFT) -o $(NAME_BONUS)
 
 $(LIBFT):
 				@make -s -C $(LIBFT_PATH)
@@ -57,11 +52,11 @@ all: $(NAME)
 bonus: $(NAME_BONUS)
 
 clean:			
-				@rm -f $(OBJS) $(OBJS_BONUS)
+				@rm -f $(OBJS)
 				@make clean -s -C $(LIBFT_PATH)
 
 fclean:			
-				@rm -f $(NAME) $(NAME_BONUS) $(OBJS) $(OBJS_BONUS) $(LIBFT) $(PIPEX) $(PIPEX_BONUS)
+				@rm -f $(NAME) $(OBJS) $(LIBFT) $(PUSH_SWAP)
 				@make fclean -s -C $(LIBFT_PATH)
 
 re: fclean all
