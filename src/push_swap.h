@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:15:56 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/12/21 15:10:00 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/01/02 11:56:06 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ typedef struct s_push
 	char	**arg;
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_list	*a;
+	t_list	*b;
+	t_list	*aux;
+	t_list	*aux2;
 }				t_push;
 
 int				check_argv(char **arg);
@@ -45,5 +49,15 @@ void			rrr(t_push *p, int flag);
 void			sort_3(t_push *p);
 void			push_b(t_push *p);
 void			put_pos(t_push *p);
+void			put_t_pos(t_push *p);
+void			put_costa(t_push *p);
+void			put_costb(t_push *p);
+int				check_order(t_push *p);
+int				total_cost(t_list *node);
+t_list			*cheaper_cost(t_push *p);
+void			final_moves(t_push *p);
+int				ft_abs(int cost);
+void			free_arg(char **arg);
+void			lst_print_structs(t_list **lst_a, t_list **lst_b);
 
 #endif

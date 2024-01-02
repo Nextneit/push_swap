@@ -6,14 +6,37 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:25:53 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/12/21 15:10:48 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/01/02 14:47:54 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void ft_leaks(void)
+{
+	system("leaks -q push_swap");
+}
+
+void	del_content(int content)
+{
+	content = 0;
+}
+
+static void	initialize_struct(t_push *p)
+{
+	p->arg = NULL;
+	p->stack_a = NULL;
+	p->stack_b = NULL;
+	p->a = NULL;
+	p->b = NULL;
+	p->aux = NULL;
+	p->aux2 = NULL;
+}
+
 int	main2(t_push *p)
 {
+	fill_a(p);
+	get_index(p);
 	if (check_index(p) == 0)
 		return (EXIT_SUCCESS);
 	if (ft_lstsize(p->stack_a) == 2)
@@ -27,39 +50,28 @@ int	main2(t_push *p)
 int	main(int argc, char **argv)
 {
 	t_push	*p;
+	char	**split;
 
+	atexit(ft_leaks);
 	p = ft_calloc(1, sizeof(t_push));
 	if (!p)
 		return (EXIT_FAILURE);
+	initialize_struct(p);
 	if (argc == 2)
-		p->arg = ft_split(argv[1], ' ');
+	{
+		split = ft_split(argv[1], ' ');
+		p->arg = split;
+	}
 	else if (argc > 2)
 		p->arg = argv + 1;
 	else
-		return (ft_printf("No hay argumentos\n"), EXIT_FAILURE);
+		return (free(p), ft_printf("Error a\n"), EXIT_FAILURE);
 	if (check_argv(p->arg) == 1)
-		return (ft_printf("Argumento no valido\n"), EXIT_FAILURE);
+		return (free_arg(split), free(p), ft_printf("Error b\n"), EXIT_FAILURE);
 	if (check_rep(p->arg) == 1)
-		return (ft_printf("Argumentos repetidos\n"), EXIT_FAILURE);
-	fill_a(p);
-	get_index(p);
+		return (free_arg(split), free(p), ft_printf("Error c\n"), EXIT_FAILURE);
 	main2(p);
-	ft_printf("stack_A\n");
-	check_stack(p, p->stack_a);
-	ft_printf("stack_B\n");
-	check_stack(p, p->stack_b);
-}
-
-void	check_stack(t_push *p, t_list *list)
-{
-	t_list	*aux;
-
-	(void)p;
-	aux = list;
-	while (aux != NULL)
-	{
-		ft_printf("value->%d index->%d pos->%d\n", aux->value, aux->index, aux->pos);
-		aux = aux->next;
-	}
-	ft_printf("\n");
+	return (ft_lstclear(&p->stack_a, &del_content),
+		ft_lstclear(&p->stack_b, &del_content),
+		free(p), free_arg(split), EXIT_SUCCESS);
 }

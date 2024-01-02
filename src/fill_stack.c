@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:26:02 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 12:15:37 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:56:22 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ long long int	ft_atol(char *s)
 		i++;
 	}
 	return (n * sign);
+}
+
+void	free_arg(char **arg)
+{
+	int	i;
+
+	i = 0;
+		if (arg != NULL)
+		{
+			while (arg[i] != NULL)
+			{
+				free(arg[i]);
+				i++;
+			}
+			free(arg);
+			arg = NULL;
+		}
 }
 
 int	fill_a(t_push *p)
