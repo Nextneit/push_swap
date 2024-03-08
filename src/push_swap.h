@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 11:15:56 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 11:56:06 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:40:26 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ t_list			*cheaper_cost(t_push *p);
 void			final_moves(t_push *p);
 int				ft_abs(int cost);
 void			free_arg(char **arg);
-void			lst_print_structs(t_list **lst_a, t_list **lst_b);
+void			del_content(int content);
 
 #endif

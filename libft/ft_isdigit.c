@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:45:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/12/19 10:48:46 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:49:09 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
-		return (0);
-	return (1);
+	if (c < '0' || c > '9')
+		return (1);
+	return (0);
 }

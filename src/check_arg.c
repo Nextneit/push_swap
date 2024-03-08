@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:54:37 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 12:57:47 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:46:34 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_argv(char **arg)
 				return (EXIT_FAILURE);
 			if (arg[i][j] == '-' || arg[i][j] == '+')
 				j++;
-			if (ft_isdigit(arg[i][j]) == 1)
+			if (ft_isdigit(arg[i][j]))
 				return (EXIT_FAILURE);
 			j++;
 		}

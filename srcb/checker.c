@@ -1,25 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 12:25:53 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/01/04 15:24:13 by ncruz-ga         ###   ########.fr       */
+/*   Created: 2024/01/02 15:23:44 by ncruz-ga          #+#    #+#             */
+/*   Updated: 2024/01/04 16:07:27 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-/*void ft_leaks(void)
-{
-	system("leaks -q push_swap");
-}*/
+#include "../src/push_swap.h"
 
 void	del_content(int content)
 {
 	content = 0;
+}
+
+int	check(char **line, t_push *p)
+{
+	if (ft_strncmp(*line, "pa\n", 3) == 0)
+		return (pa(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "pb\n", 3) == 0)
+		return (pb(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "sa\n", 3) == 0)
+		return (sa(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "sb\n", 3) == 0)
+		return (sb(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "ss\n", 3) == 0)
+		return (ss(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "ra\n", 3) == 0)
+		return (ra(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "rb\n", 3) == 0)
+		return (rb(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "rr\n", 3) == 0)
+		return (rr(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "rra\n", 4) == 0)
+		return (rra(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "rrb\n", 4) == 0)
+		return (rrb(p, 0), EXIT_SUCCESS);
+	if (ft_strncmp(*line, "rrr\n", 4) == 0)
+		return (rrr(p, 0), EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }
 
 static void	initialize_struct(t_push *p)
@@ -33,19 +55,26 @@ static void	initialize_struct(t_push *p)
 	p->aux2 = NULL;
 }
 
-int	main2(t_push *p)
+static int	main2(t_push *p)
 {
+	char	*line;
+
 	if (fill_a(p) == 1)
 		return (EXIT_FAILURE);
-	get_index(p);
-	if (check_index(p) == 0)
-		return (EXIT_SUCCESS);
-	if (ft_lstsize(p->stack_a) == 2)
-		return (sa(p, 1), EXIT_SUCCESS);
-	if (ft_lstsize(p->stack_a) == 3)
-		return (sort_3(p), EXIT_SUCCESS);
-	push_b(p);
-	return (EXIT_SUCCESS);
+	line = get_next_line(0);
+	while (line)
+	{
+		if (check(&line, p) == EXIT_FAILURE)
+			return (free(line), ft_putendl_fd("Error", 2), EXIT_FAILURE);
+		else
+		{
+			free(line);
+			line = get_next_line(0);
+		}
+	}
+	if (check_order(p) && p->stack_b == NULL)
+		return (ft_printf("OK\n"), EXIT_SUCCESS);
+	return (ft_printf("KO\n"), EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv)

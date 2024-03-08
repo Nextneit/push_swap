@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:26:02 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2023/12/29 12:56:22 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/01/03 12:20:42 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ void	free_arg(char **arg)
 	int	i;
 
 	i = 0;
-		if (arg != NULL)
+	if (arg != NULL)
+	{
+		while (arg[i] != NULL)
 		{
-			while (arg[i] != NULL)
-			{
-				free(arg[i]);
-				i++;
-			}
-			free(arg);
-			arg = NULL;
+			free(arg[i]);
+			i++;
 		}
+		free(arg);
+		arg = NULL;
+	}
 }
 
 int	fill_a(t_push *p)
@@ -61,6 +61,8 @@ int	fill_a(t_push *p)
 	while (p->arg[i] != NULL)
 	{
 		n = ft_atol(p->arg[i]);
+		if (n < MIN_INT || n > MAX_INT)
+			return (EXIT_FAILURE);
 		ft_lstadd_back(&p->stack_a, ft_lstnew(n, 0, 0, 0));
 		i++;
 	}
