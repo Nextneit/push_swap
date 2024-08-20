@@ -6,16 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:25:53 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/01/04 15:24:13 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:33:25 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*void ft_leaks(void)
-{
-	system("leaks -q push_swap");
-}*/
 
 void	del_content(int content)
 {
