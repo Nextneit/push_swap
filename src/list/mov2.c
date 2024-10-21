@@ -1,67 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mov3.c                                             :+:      :+:    :+:   */
+/*   mov2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 11:35:32 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/08/20 12:34:55 by ncruz-ga         ###   ########.fr       */
+/*   Created: 2023/12/20 15:22:07 by ncruz-ga          #+#    #+#             */
+/*   Updated: 2024/10/21 19:25:27 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	rra(t_push *p, int flag)
+void	ra(t_push *p, int flag)
 {
 	t_list	*aux;
-	t_list	*last;
 
 	if (ft_lstsize(p->stack_a) < 2)
 		return ;
 	aux = p->stack_a;
-	last = ft_lstlast(p->stack_a);
-	while (aux)
-	{
-		if (aux->next->next == NULL)
-		{
-			aux->next = NULL;
-			break ;
-		}
-		aux = aux->next;
-	}
-	ft_lstadd_front(&p->stack_a, last);
+	p->stack_a = p->stack_a->next;
+	aux->next = NULL;
+	ft_lstadd_back(&p->stack_a, aux);
 	if (flag == 1)
-		ft_printf("rra\n");
+		ft_printf("ra\n");
 }
 
-void	rrb(t_push *p, int flag)
+void	rb(t_push *p, int flag)
 {
 	t_list	*aux;
-	t_list	*last;
 
 	if (ft_lstsize(p->stack_b) < 2)
 		return ;
 	aux = p->stack_b;
-	last = ft_lstlast(p->stack_b);
-	while (aux)
-	{
-		if (aux->next->next == NULL)
-		{
-			aux->next = NULL;
-			break ;
-		}
-		aux = aux->next;
-	}
-	ft_lstadd_front(&p->stack_b, last);
+	p->stack_b = p->stack_b->next;
+	aux->next = NULL;
+	ft_lstadd_back(&p->stack_b, aux);
 	if (flag == 1)
-		ft_printf("rrb\n");
+		ft_printf("rb\n");
 }
 
-void	rrr(t_push *p, int flag)
+void	rr(t_push *p, int flag)
 {
-	rra(p, 0);
-	rrb(p, 0);
+	ra(p, 0);
+	rb(p, 0);
 	if (flag == 1)
-		ft_printf("rrr\n");
+		ft_printf("rr\n");
 }

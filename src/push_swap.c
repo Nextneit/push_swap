@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:25:53 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/08/20 12:33:25 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:30:10 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	del_content(int content)
 {
-	content = 0;
+	if (content != 0)
+		content = 0;
 }
 
 static void	initialize_struct(t_push *p)

@@ -6,11 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:54:37 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/08/20 12:34:41 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:33:44 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	check_argv(char **arg)
 {
@@ -31,7 +31,7 @@ int	check_argv(char **arg)
 				return (EXIT_FAILURE);
 			j++;
 		}
-		if (ft_atoi(arg[i]) < MIN_INT || ft_atoi(arg[i]) > MAX_INT)
+		if (ft_atol(arg[i]) < MIN_INT || ft_atol(arg[i]) > MAX_INT)
 			return (EXIT_FAILURE);
 		j = 0;
 		i++;

@@ -6,11 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 14:44:14 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/08/20 12:34:37 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:25:17 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	last_step(t_push *p)
 {

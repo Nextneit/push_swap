@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:23:44 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/08/20 12:35:04 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:35:45 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	del_content(int content)
 {
-	content = 0;
+	if (content != 0)
+		content = 0;
 }
 
 int	check(char **line, t_push *p)
